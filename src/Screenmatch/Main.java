@@ -1,6 +1,8 @@
 package Screenmatch;
 
 import Screenmatch.br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+import Screenmatch.br.com.alura.screenmatch.calculos.FiltroRecomendacao;
+import Screenmatch.br.com.alura.screenmatch.modelos.Episodio;
 import Screenmatch.br.com.alura.screenmatch.modelos.Filme;
 import Screenmatch.br.com.alura.screenmatch.modelos.Serie;
 
@@ -77,13 +79,27 @@ public class Main {
 
         System.out.println("Calcular tempo");
 
-
-
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
         calculadora.inclui(filme);
         calculadora.inclui(outroFilme);
         calculadora.inclui(serie);
         System.out.println(calculadora.getTempoTotal());
+
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtra(filme);
+
+
+        System.out.println("******************************");
+
+        System.out.println("Episodio");
+
+        Episodio episodio = new Episodio();
+
+        episodio.setNumero(1);
+        episodio.setSerie("Dexter");
+        episodio.setTotalVisualizacoes(300);
+        filtro.filtra(episodio);
+
 
     }
 }
