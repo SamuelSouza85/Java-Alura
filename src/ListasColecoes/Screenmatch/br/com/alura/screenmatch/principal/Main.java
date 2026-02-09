@@ -1,4 +1,4 @@
-package ListasColecoes.Screenmatch;
+package ListasColecoes.Screenmatch.br.com.alura.screenmatch.principal;
 
 import ListasColecoes.Screenmatch.br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import ListasColecoes.Screenmatch.br.com.alura.screenmatch.calculos.FiltroRecomendacao;
@@ -50,7 +50,7 @@ public class Main {
         System.out.println("Serie");
 
         System.out.println();
-        
+
         serie.setGenero("Investigação");
         serie.setAnoDeLancamento(2006);
         serie.setTemporadas(8);
