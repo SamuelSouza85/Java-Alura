@@ -4,7 +4,7 @@ import ListasColecoes.Screenmatch.br.com.alura.screenmatch.modelos.Filme;
 import ListasColecoes.Screenmatch.br.com.alura.screenmatch.modelos.Serie;
 import ListasColecoes.Screenmatch.br.com.alura.screenmatch.modelos.Titulo;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class mainListas {
     public static void main(String[] args) {
@@ -34,7 +34,26 @@ public class mainListas {
             if (item instanceof Filme filme2 && filme2.getClassificacao() > 2){
                 System.out.println("Classificação:" + filme2.getClassificacao());
             }
-
          }
+
+         List<String> buscaPorArtista = new LinkedList<>();
+        buscaPorArtista.add("Adam Sandler");
+        buscaPorArtista.add("Cleber");
+        buscaPorArtista.add("Samuel");
+        buscaPorArtista.add("Fabio");
+        System.out.println(buscaPorArtista);
+
+        Collections.sort(buscaPorArtista);
+        System.out.println("Depois da ordenação" + buscaPorArtista);
+
+        System.out.println("Organizado por ordem alfabetica");
+
+        Collections.sort(listaDeAssistidos);
+        System.out.println(listaDeAssistidos);
+
+        System.out.println("Organizado por ano de lançamento");
+
+        listaDeAssistidos.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println(listaDeAssistidos);
     }
 }
