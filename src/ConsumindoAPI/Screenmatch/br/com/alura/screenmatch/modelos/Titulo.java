@@ -1,11 +1,10 @@
 package ConsumindoAPI.Screenmatch.br.com.alura.screenmatch.modelos;
 
+import ConsumindoAPI.Screenmatch.br.com.alura.screenmatch.excecao.ErroDeConversaoDeAnoException;
 import com.google.gson.annotations.SerializedName;
 
 public class Titulo implements Comparable<Titulo>{
-    @SerializedName("Title")
     private String nome;
-    @SerializedName("Year")
     private int anoDeLancamento;
     private String genero;
     private boolean inclusoNoPlano;
@@ -21,8 +20,12 @@ public class Titulo implements Comparable<Titulo>{
 
     public Titulo(TituloOmdb meuTituloOmdb) {
         this.nome = meuTituloOmdb.title();
-        this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
-        this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0, 2));
+
+        if (meuTituloOmdb.year().length() > 4){
+            throw  new ErroDeConversaoDeAnoException("Não consegui conveter o ano pq tem mais de quatro caracteres");
+        }
+        this.anoDeLancamento = Integer.parseInt(meuTituloOmdb.year());
+        this.duracaoEmMinutos = Integer.parseInt(meuTituloOmdb.runtime().substring(0, 2));
     }
 
 
@@ -113,8 +116,9 @@ public class Titulo implements Comparable<Titulo>{
     @Override
     public String toString() {
         return "Titulo{" +
-                "anoDeLancamento=" + anoDeLancamento +
-                ", nome='" + nome + '\'' + "duração em minutos= " + duracaoEmMinutos + " min " +
+                "nome='" + nome + '\'' +
+                ", anoDeLancamento=" + anoDeLancamento +
+                ", genero='" + genero + '\'' +
                 '}';
     }
 }
